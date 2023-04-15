@@ -1,0 +1,64 @@
+@page
+@model zoo.Pages_ZooAnimals.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>AnimalModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AnimalModel.Name" class="control-label"></label>
+                <input asp-for="AnimalModel.Name" class="form-control" />
+                <span asp-validation-for="AnimalModel.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnimalModel.ImageName" class="control-label"></label>
+                <input asp-for="AnimalModel.ImageName"  name="animalImage" type="file" class="form-control" />
+                <span asp-validation-for="AnimalModel.ImageName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnimalModel.Species" class="control-label"></label>
+                <input asp-for="AnimalModel.Species" class="form-control" />
+                <span asp-validation-for="AnimalModel.Species" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnimalModel.Age" class="control-label"></label>
+                <input asp-for="AnimalModel.Age" class="form-control" />
+                <span asp-validation-for="AnimalModel.Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnimalModel.Gender" class="control-label"></label>
+                <input asp-for="AnimalModel.Gender" class="form-control" />
+                <span asp-validation-for="AnimalModel.Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnimalModel.Location" class="control-label"></label>
+                <input asp-for="AnimalModel.Location" class="form-control" />
+                <span asp-validation-for="AnimalModel.Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnimalModel.Description" class="control-label"></label>
+                <input asp-for="AnimalModel.Description" class="form-control" />
+                <span asp-validation-for="AnimalModel.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
