@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="AnimalModel.AnimalModelId" />
             <div class="form-group">
@@ -19,11 +19,13 @@
                 <input asp-for="AnimalModel.Name" class="form-control" />
                 <span asp-validation-for="AnimalModel.Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
+             <div class="form-group">
+                 <input type="hidden" name="originalImageName" value="@ViewData["OriginalImageName"]" />
                 <label asp-for="AnimalModel.ImageName" class="control-label"></label>
-                <input asp-for="AnimalModel.ImageName" class="form-control" />
+                <input asp-for="AnimalModel.ImageName"  name="animalImage" type="file" class="form-control" />
                 <span asp-validation-for="AnimalModel.ImageName" class="text-danger"></span>
             </div>
+           
             <div class="form-group">
                 <label asp-for="AnimalModel.Species" class="control-label"></label>
                 <input asp-for="AnimalModel.Species" class="form-control" />

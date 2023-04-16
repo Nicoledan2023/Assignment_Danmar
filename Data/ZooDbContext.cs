@@ -9,6 +9,7 @@ public class ZooDbContext : DbContext
     }
 
     public DbSet<AnimalModel> Animals { get; set; } = default!;
+    public DbSet<EventModel> Zooevents { get; set; } = default!;
 
 }
 

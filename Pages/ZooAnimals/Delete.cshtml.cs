@@ -21,7 +21,7 @@ namespace zoo.Pages_ZooAnimals
         [BindProperty]
       public AnimalModel AnimalModel { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(uint? id)
         {
             if (id == null || _context.Animals == null)
             {
@@ -41,7 +41,7 @@ namespace zoo.Pages_ZooAnimals
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync(uint? id)
         {
             if (id == null || _context.Animals == null)
             {

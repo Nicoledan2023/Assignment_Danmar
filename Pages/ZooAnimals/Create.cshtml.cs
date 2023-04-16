@@ -42,12 +42,12 @@ namespace zoo.Pages_ZooAnimals
                 var fileName = Guid.NewGuid().ToString() + Path.GetExtension(animalImage.FileName);
                 var filePath = Path.Combine(uploadsFolder, fileName);
 
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
                     await animalImage.CopyToAsync(fileStream);
                 }
 
-AnimalModel.ImageName = Path.Combine("uploads", fileName);
+                AnimalModel.ImageName = Path.Combine("uploads", fileName);
             }
             if (!ModelState.IsValid || _context.Animals == null || AnimalModel == null)
             {

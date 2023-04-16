@@ -5,6 +5,19 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to the Zoo Management System!</h1>
+    <h2><b>Upcoming events</b></h2>
+<ol>
+    @foreach (var evt in Model.Events)
+    {
+        <li>
+           <div style="display: inline-block;">
+            <h2 style="display: inline-block; margin: 0;">@evt.Title</h2>
+            <p style="display: inline-block; margin: 0 0 0 10px;">Time: @evt.Description</p>
+            <p style="display: inline-block; margin: 0 0 0 10px;">Time: @evt.ETime</p>
+        </div>
+        </li>
+    }
+</ol>
 </div>
+

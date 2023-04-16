@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 var dbmsVersion = new MariaDbServerVersion(builder.Configuration.GetValue<string>("MariaDbVersion"));
 var connectionString = builder.Configuration.GetConnectionString("ZooDb");
 
+
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ZooDbContext>(opt => opt.UseMySql(connectionString, dbmsVersion));
