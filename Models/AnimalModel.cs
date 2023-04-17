@@ -11,6 +11,8 @@ public class AnimalModel
     public uint Age { get; set; } = 0;
     public string Gender { get; set; }=string.Empty;
     public string Location { get; set; }=string.Empty;
+
+    public uint quantity { get; set; } = 0;
     public string Description { get; set; }=string.Empty;
     
 }

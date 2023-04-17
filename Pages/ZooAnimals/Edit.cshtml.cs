@@ -55,7 +55,7 @@ namespace zoo.Pages_ZooAnimals
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync( IFormFile? animalImage,string? originalImageName)
         {
-             _logger.LogInformation("888888 value: {@animalImage}", animalImage);
+             
            
              if (animalImage != null && animalImage.Length > 0)
             {
