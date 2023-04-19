@@ -36,7 +36,7 @@ namespace zoo.Pages_ZooAnimals
 
         
         public string SortOrder { get; set; } = "Location_asc";
-            public async Task OnGetAsync(string sortbylocation)
+            public async Task OnGetAsync(string sortby)
             {
                 
                 IQueryable<AnimalModel> animals = _context.Animals;
@@ -58,7 +58,7 @@ namespace zoo.Pages_ZooAnimals
                 }
             _logger.LogInformation(SortOrder);
 
-            switch (sortbylocation)
+            switch (sortby)
                 {
                     
                     case "Location_desc":
@@ -69,9 +69,25 @@ namespace zoo.Pages_ZooAnimals
                         animals = animals.OrderBy(g => g.Location);
                         SortOrder = "Location_asc";
                         break;
+                    case "Name_desc":
+                        animals = animals.OrderByDescending(g => g.Name);
+                        SortOrder = "Name_desc";
+                        break;
+                    case "Name_asc":
+                        animals = animals.OrderBy(g => g.Name);
+                        SortOrder = "Name_asc";
+                        break;
+                     case "Quan_desc":
+                        animals = animals.OrderByDescending(g => g.quantity);
+                        SortOrder = "Quan_desc";
+                        break;
+                    case "Quan_asc":
+                        animals = animals.OrderBy(g => g.quantity);
+                        SortOrder = "Quan_asc";
+                        break;
                             
                     default: 
-                        animals = animals.OrderBy(g => g.Location);
+                        animals = animals.OrderBy(g => g.Name);
                         break;
                 }
 

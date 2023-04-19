@@ -32,8 +32,20 @@
             <th>
                 @Html.DisplayNameFor(model => model.AnimalModel[0].ImageName)
             </th>
-             <th>               
-                @Html.DisplayNameFor(model => model.AnimalModel[0].Name)
+             <th>   
+                 @if (Model.SortOrder == "Name_desc")
+                {
+                    <a href="?sortby=Name_asc"> @Html.DisplayNameFor(model => model.AnimalModel[0].Name) <i class="fas fa-sort-down"></i></a>
+                }
+                else if (Model.SortOrder == "Name_asc")
+                {
+                    <a href="?sortby=Name_desc"> @Html.DisplayNameFor(model => model.AnimalModel[0].Name)<i class="fas fa-sort-up"></i></a>
+                }
+                else
+                {
+                    <a href="?sortby=Name_asc"> @Html.DisplayNameFor(model => model.AnimalModel[0].Name)<i class="fas fa-sort-down"></i></a>
+                }            
+               
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.AnimalModel[0].Species)
@@ -48,20 +60,32 @@
             
            @if (Model.SortOrder == "Location_desc")
                 {
-                    <a href="?sortbylocation=Location_asc">Location </a>
+                    <a href="?sortby=Location_asc">Location <i class="fas fa-sort-down"></i></a>
                 }
                 else if (Model.SortOrder == "Location_asc")
                 {
-                    <a href="?sortbylocation=Location_desc">Location</a>
+                    <a href="?sortby=Location_desc">Location<i class="fas fa-sort-up"></i></a>
                 }
                 else
                 {
-                    <a href="?sortbylocation=Location_asc">Location</a>
+                    <a href="?sortby=Location_asc">Location<i class="fas fa-sort-down"></i></a>
                 }
                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AnimalModel[0].quantity)
+                 @if (Model.SortOrder == "Quan_desc")
+                {
+                    <a href="?sortby=Quan_asc"> @Html.DisplayNameFor(model => model.AnimalModel[0].quantity) <i class="fas fa-sort-down"></i></a>
+                }
+                else if (Model.SortOrder == "Quan_asc")
+                {
+                    <a href="?sortby=Quan_desc"> @Html.DisplayNameFor(model => model.AnimalModel[0].quantity)<i class="fas fa-sort-up"></i></a>
+                }
+                else
+                {
+                    <a href="?sortby=Quan_asc">  @Html.DisplayNameFor(model => model.AnimalModel[0].quantity)<i class="fas fa-sort-down"></i></a>
+                }   
+               
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.AnimalModel[0].Description)
