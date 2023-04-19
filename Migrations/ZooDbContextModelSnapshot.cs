@@ -80,6 +80,36 @@ namespace zoo.Migrations
 
                     b.ToTable("Zooevents");
                 });
+
+            modelBuilder.Entity("UserModel", b =>
+                {
+                    b.Property<uint>("UserModelId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int unsigned");
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("UserModelId");
+
+                    b.ToTable("User");
+                });
 #pragma warning restore 612, 618
         }
     }
