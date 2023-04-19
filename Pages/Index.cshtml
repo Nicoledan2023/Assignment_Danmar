@@ -8,7 +8,7 @@
     <h1 class="display-4">Welcome to the Zoo Management System!</h1>
     <h2><b>Upcoming events</b></h2>
 <ol>
-    @foreach (var evt in Model.Events)
+    @foreach (var evt in Model.Events.Where(e => e.ETime.Date >= DateTime.Today))
     {
         <li>
            <div style="display: inline-block;">

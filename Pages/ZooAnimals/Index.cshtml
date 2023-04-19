@@ -2,13 +2,29 @@
 @model zoo.Pages_ZooAnimals.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Animals";
 }
 
-<h1>Index</h1>
+<div>
+	<h3>Search</h3>
+	<form>
+		<label for="name">Name : </label>
+        <input type="text" asp-for="Query" />
+
+        <label for="species">Species : </label>
+		<input type="text" asp-for="ASpecies"/>	
+
+         <label for="gender">Gender : </label>
+		<input type="text" asp-for="AGender"/>	
+
+         <label for="location">Location : </label>
+		<input type="text" asp-for="ALocation"/>		
+		<input type="submit" value="Search" />
+	</form>
+</div>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Create New Animal</a>
 </p>
 <table class="table">
     <thead>
@@ -16,7 +32,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.AnimalModel[0].ImageName)
             </th>
-             <th>
+             <th>               
                 @Html.DisplayNameFor(model => model.AnimalModel[0].Name)
             </th>
             <th>
@@ -28,8 +44,21 @@
             <th>
                 @Html.DisplayNameFor(model => model.AnimalModel[0].Gender)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AnimalModel[0].Location)
+           <th>
+            
+           @if (Model.SortOrder == "Location_desc")
+                {
+                    <a href="?sortbylocation=Location_asc">Location </a>
+                }
+                else if (Model.SortOrder == "Location_asc")
+                {
+                    <a href="?sortbylocation=Location_desc">Location</a>
+                }
+                else
+                {
+                    <a href="?sortbylocation=Location_asc">Location</a>
+                }
+               
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.AnimalModel[0].quantity)

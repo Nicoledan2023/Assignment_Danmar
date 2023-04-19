@@ -13,8 +13,8 @@ namespace zoo.Pages_ZooAnimals
     public class EditModel : PageModel
     {
         private readonly Zoo.Models.ZooDbContext _context;
-         private readonly IWebHostEnvironment _environment;
-          private readonly ILogger<CreateModel> _logger;
+        private readonly IWebHostEnvironment _environment;
+        private readonly ILogger<CreateModel> _logger;
 
         public EditModel(IWebHostEnvironment environment,  ILogger<CreateModel> logger,Zoo.Models.ZooDbContext context)
         {
@@ -25,7 +25,6 @@ namespace zoo.Pages_ZooAnimals
 
         [BindProperty]
         public AnimalModel AnimalModel { get; set; } = default!;
-
 
         public async Task<IActionResult> OnGetAsync(uint? id)
         {
@@ -55,8 +54,7 @@ namespace zoo.Pages_ZooAnimals
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync( IFormFile? animalImage,string? originalImageName)
         {
-             
-           
+                      
              if (animalImage != null && animalImage.Length > 0)
             {
                 var uploadsFolder = Path.Combine(_environment.WebRootPath, "uploads");

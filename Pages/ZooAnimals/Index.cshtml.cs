@@ -12,20 +12,71 @@ namespace zoo.Pages_ZooAnimals
     public class IndexModel : PageModel
     {
         private readonly Zoo.Models.ZooDbContext _context;
+        private readonly ILogger<CreateModel> _logger;
 
-        public IndexModel(Zoo.Models.ZooDbContext context)
+        public IndexModel(Zoo.Models.ZooDbContext context,ILogger<CreateModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
-        public IList<AnimalModel> AnimalModel { get;set; } = default!;
+        public IList<AnimalModel> AnimalModel { get; set; } = default!;
 
-        public async Task OnGetAsync()
-        {
-            if (_context.Animals != null)
+        [BindProperty(SupportsGet = true)]
+        public string Query { get; set; } = default!;
+
+        [BindProperty(SupportsGet = true)]
+        public string ASpecies { get; set; } = default!;
+
+        [BindProperty(SupportsGet = true)]
+        public string AGender { get; set; } = default!;
+
+        [BindProperty(SupportsGet = true)]
+        public string ALocation { get; set; } = default!;
+
+        
+        public string SortOrder { get; set; } = "Location_asc";
+            public async Task OnGetAsync(string sortbylocation)
             {
-                AnimalModel = await _context.Animals.ToListAsync();
+                
+                IQueryable<AnimalModel> animals = _context.Animals;
+                if (!string.IsNullOrEmpty(Query))
+                {
+                    animals = animals.Where(g => g.Name.Contains(Query));
+                }
+                if (!string.IsNullOrEmpty(ASpecies))
+                {
+                    animals = animals.Where(g => g.Species.Contains(ASpecies));
+                }
+                if (!string.IsNullOrEmpty(AGender))
+                {
+                    animals = animals.Where(g => g.Gender.Contains(AGender));
+                }
+                if (!string.IsNullOrEmpty(ALocation))
+                {
+                    animals = animals.Where(g => g.Location.Contains(ALocation));
+                }
+            _logger.LogInformation(SortOrder);
+
+            switch (sortbylocation)
+                {
+                    
+                    case "Location_desc":
+                        animals = animals.OrderByDescending(g => g.Location);
+                        SortOrder = "Location_desc";
+                        break;
+                    case "Location_asc":
+                        animals = animals.OrderBy(g => g.Location);
+                        SortOrder = "Location_asc";
+                        break;
+                            
+                    default: 
+                        animals = animals.OrderBy(g => g.Location);
+                        break;
+                }
+
+                AnimalModel = await animals.ToListAsync();
+            
             }
         }
-    }
 }
