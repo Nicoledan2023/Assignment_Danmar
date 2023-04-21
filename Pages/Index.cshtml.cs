@@ -18,11 +18,14 @@ public class IndexModel : PageModel
 
   public List<EventModel> Events { get; set; }
 
+    public List<AnimalModel> Animals { get; set; }
+
 
   public async Task<IActionResult> OnGetAsync()
   {
     Events = await _context.Zooevents.ToListAsync();
     Users = await _context.Users.ToListAsync();
+    Animals = await _context.Animals.ToListAsync();
     return Page();
   }
 

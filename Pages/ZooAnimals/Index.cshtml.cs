@@ -42,7 +42,7 @@ namespace zoo.Pages_ZooAnimals
         [BindProperty(SupportsGet = true)]
         public string ALocation { get; set; } = default!;
 
-        //add to export the file of animals
+        //add by dan to export the file of animals
 
       public async Task<IActionResult> OnPostExportReportAsync()
         {         
@@ -94,19 +94,20 @@ namespace zoo.Pages_ZooAnimals
             }
             document.Add(table);
 
-         var fileName = "AnimalReport.pdf";
-         var filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
-         var fileDirectory = Path.GetDirectoryName(filePath);
+            var fileName = "AnimalReport.pdf";
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
+            var fileDirectory = Path.GetDirectoryName(filePath);
 
-        if (!Directory.Exists(fileDirectory))
-        {
-            Directory.CreateDirectory(fileDirectory);
-        }
+            if (!Directory.Exists(fileDirectory))
+            {
+                Directory.CreateDirectory(fileDirectory);
+            }
 
-            document.Close();
-            return Page();
+                document.Close();
+                AnimalModel = animals;
+                return Page();
 
-        }
+            }
 
 
         public string SortOrder { get; set; } = "Location_asc";
