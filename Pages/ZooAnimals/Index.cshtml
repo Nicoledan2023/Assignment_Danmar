@@ -7,8 +7,8 @@
 
 <div>
 	<h3>Search</h3>
-	<form>
-		<label for="name">Name : </label>
+	<form class="searchform">
+		<label class="SearchLb" for="name">Name : </label>
         <input type="text" asp-for="Query" />
 
         <label for="species">Species : </label>
@@ -24,7 +24,7 @@
 </div>
 
 <p>
-    <a asp-page="Create">Create New Animal</a>
+    <a class="createnew" asp-page="Create">Create New Animal</a>
    <form asp-page-handler="ExportReport">
     <button type="submit">Export Report</button>
 </form>

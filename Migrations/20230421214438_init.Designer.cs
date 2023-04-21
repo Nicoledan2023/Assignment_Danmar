@@ -11,7 +11,7 @@ using Zoo.Models;
 namespace zoo.Migrations
 {
     [DbContext(typeof(ZooDbContext))]
-    [Migration("20230419171905_init")]
+    [Migration("20230421214438_init")]
     partial class init
     {
         /// <inheritdoc />
