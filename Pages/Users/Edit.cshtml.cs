@@ -24,12 +24,12 @@ namespace zoo.Pages_Users
 
         public async Task<IActionResult> OnGetAsync(uint? id)
         {
-            if (id == null || _context.User == null)
+            if (id == null || _context.Users == null)
             {
                 return NotFound();
             }
 
-            var usermodel =  await _context.User.FirstOrDefaultAsync(m => m.UserModelId == id);
+            var usermodel =  await _context.Users.FirstOrDefaultAsync(m => m.UserModelId == id);
             if (usermodel == null)
             {
                 return NotFound();
@@ -70,7 +70,7 @@ namespace zoo.Pages_Users
 
         private bool UserModelExists(uint id)
         {
-          return (_context.User?.Any(e => e.UserModelId == id)).GetValueOrDefault();
+          return (_context.Users?.Any(e => e.UserModelId == id)).GetValueOrDefault();
         }
     }
 }

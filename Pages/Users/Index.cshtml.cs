@@ -22,9 +22,9 @@ namespace zoo.Pages_Users
 
         public async Task OnGetAsync()
         {
-            if (_context.User != null)
+            if (_context.Users != null)
             {
-                UserModel = await _context.User.ToListAsync();
+                UserModel = await _context.Users.ToListAsync();
             }
         }
     }

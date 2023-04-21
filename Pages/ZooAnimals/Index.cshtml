@@ -25,6 +25,9 @@
 
 <p>
     <a asp-page="Create">Create New Animal</a>
+   <form asp-page-handler="ExportReport">
+    <button type="submit">Export Report</button>
+</form>
 </p>
 <table class="table">
     <thead>
@@ -94,38 +97,43 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.AnimalModel) {
-        <tr>
-           <td>
-             <img src="@item.ImageName"  style="max-width: 150px; max-height: 150px;" />
-            </td>
-             <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Species)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Age)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-             <td>
-                @Html.DisplayFor(modelItem => item.quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.AnimalModelId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.AnimalModelId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.AnimalModelId">Delete</a>
-            </td>
-        </tr>
-}
+        @if (Model.AnimalModel != null)
+        {
+            @foreach (var item in Model.AnimalModel)
+            {
+                <tr>
+                    <td>
+                        <img src="@item.ImageName"  style="max-width: 150px; max-height: 150px;" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Species)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Age)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.AnimalModelId">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.AnimalModelId">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.AnimalModelId">Delete</a>
+                    </td>
+
+                </tr>
+            }
+        }
     </tbody>
 </table>

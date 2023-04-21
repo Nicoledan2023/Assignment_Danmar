@@ -23,12 +23,12 @@ namespace zoo.Pages_Users
 
         public async Task<IActionResult> OnGetAsync(uint? id)
         {
-            if (id == null || _context.User == null)
+            if (id == null || _context.Users == null)
             {
                 return NotFound();
             }
 
-            var usermodel = await _context.User.FirstOrDefaultAsync(m => m.UserModelId == id);
+            var usermodel = await _context.Users.FirstOrDefaultAsync(m => m.UserModelId == id);
 
             if (usermodel == null)
             {
@@ -43,16 +43,16 @@ namespace zoo.Pages_Users
 
         public async Task<IActionResult> OnPostAsync(uint? id)
         {
-            if (id == null || _context.User == null)
+            if (id == null || _context.Users == null)
             {
                 return NotFound();
             }
-            var usermodel = await _context.User.FindAsync(id);
+            var usermodel = await _context.Users.FindAsync(id);
 
             if (usermodel != null)
             {
                 UserModel = usermodel;
-                _context.User.Remove(UserModel);
+                _context.Users.Remove(UserModel);
                 await _context.SaveChangesAsync();
             }
 

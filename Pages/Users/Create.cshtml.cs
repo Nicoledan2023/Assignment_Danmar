@@ -30,12 +30,12 @@ namespace zoo.Pages_Users
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.User == null || UserModel == null)
+          if (!ModelState.IsValid || _context.Users == null || UserModel == null)
             {
                 return Page();
             }
 
-            _context.User.Add(UserModel);
+            _context.Users.Add(UserModel);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
