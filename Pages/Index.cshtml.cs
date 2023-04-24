@@ -14,17 +14,17 @@ public class IndexModel : PageModel
     _logger = logger;
     _context = context;
   }
-  public List<UserModel> Users { get; set; }
+  public List<PersonModel> Users { get; set; }
 
   public List<EventModel> Events { get; set; }
 
-    public List<AnimalModel> Animals { get; set; }
+  public List<AnimalModel> Animals { get; set; }
 
 
   public async Task<IActionResult> OnGetAsync()
   {
     Events = await _context.Zooevents.ToListAsync();
-    Users = await _context.Users.ToListAsync();
+    Users = await _context.Persons.ToListAsync();
     Animals = await _context.Animals.ToListAsync();
     return Page();
   }

@@ -1,17 +1,23 @@
 
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-namespace Zoo.Models;
+using Zoo.Models;
 
-public class ZooDbContext : DbContext
+namespace Zoo.Models
 {
-  public ZooDbContext(DbContextOptions<ZooDbContext> options) : base(options)
+  public class ZooDbContext : IdentityDbContext<ApplicationUser>
   {
+    public ZooDbContext(DbContextOptions<ZooDbContext> options) : base(options)
+    {
+    }
+
+    public DbSet<AnimalModel> Animals { get; set; } = default!;
+    public DbSet<EventModel> Zooevents { get; set; } = default!;
+    public DbSet<PersonModel> Persons { get; set; } = default!;
+
+    public object PersonModel { get; internal set; }
   }
-
-  public DbSet<AnimalModel> Animals { get; set; } = default!;
-  public DbSet<EventModel> Zooevents { get; set; } = default!;
-  public DbSet<UserModel> Users { get; set; } = default!;
-
 
 }
 

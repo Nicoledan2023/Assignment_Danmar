@@ -1,7 +1,12 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
+using Zoo.Models;
 
-public class UserModel
+namespace Zoo.Models;
+public class PersonModel
 {
+  [Key]
   public uint UserModelId { get; set; }
   public string Name { get; set; } = string.Empty;
 
