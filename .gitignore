@@ -475,3 +475,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+Migrations/20230424190411_changessome.cs
+Migrations/20230424190411_changessome.Designer.cs
