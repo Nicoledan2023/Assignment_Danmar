@@ -70,7 +70,7 @@ namespace zoo.Pages_ZooAnimals
             //group by species then count
             var animalCountsBySpecies = animals
             .GroupBy(a => a.Species)
-            .Select(g => new { Species = g.Key, Count = g.Count() });
+            .Select(g => new { Species = g.Key, Quantity = g.Sum(a => a.quantity) });
 
             foreach (var animal in animals)
             {
@@ -90,7 +90,7 @@ namespace zoo.Pages_ZooAnimals
             document.Add(new Paragraph("Total number of animals: " + totalAnimals));
             foreach (var count in animalCountsBySpecies)
             {
-                document.Add(new Paragraph($"Species: {count.Species}, Count: {count.Count}"));
+                document.Add(new Paragraph($"Species: {count.Species}, Count: {count.Quantity}"));
             }
             document.Add(table);
 
